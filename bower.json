@@ -1,0 +1,27 @@
+{
+  "name": "angular-ra-pageload-event",
+  "version": "0.0.1",
+  "description": "AngularJS service for triggering pageload event",
+  "keywords": [
+    "angular",
+    "pageload"
+  ],
+  "main": "angular-ra-pageload-event.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src",
+    "test",
+    "Gruntfile.js",
+    "bower.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "angular": ">=1.2.22"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.2.22"
+  }
+}
