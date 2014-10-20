@@ -1,4 +1,3 @@
-
 {
   "bitwise": true,
   "camelcase": true,
@@ -23,7 +22,15 @@
   "browser": true,
   "predef": [
     "angular",
+
     "module",
-    "require"
+    "require",
+
+    "beforeEach",
+    "describe",
+    "expect",
+    "it",
+    "inject",
+    "spyOn"
   ]
 }

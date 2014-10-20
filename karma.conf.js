@@ -17,7 +17,12 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
-    files: [],
+    files: [
+      'bower_components/angular/angular.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'src/**/*.js',
+      'test/**/*.js'
+    ],
 
     // list of files / patterns to exclude
     exclude: [],
@@ -34,13 +39,7 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      'PhantomJS'
-    ],
-
-    // Which plugins to enable
-    plugins: [
-      'karma-phantomjs-launcher',
-      'karma-jasmine'
+      'Chrome'
     ],
 
     // Continuous Integration mode

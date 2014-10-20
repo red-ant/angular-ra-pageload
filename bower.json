@@ -1,12 +1,16 @@
 {
-  "name": "angular-ra-pageload-event",
+  "name": "angular-ra-pageload",
   "version": "0.0.1",
-  "description": "AngularJS service for triggering pageload event",
+  "description": "AngularJS service for triggering document ready event",
+  "author": {
+    "name": "David Chin",
+    "email": "davidchin.yf@gmail.com"
+  },
   "keywords": [
     "angular",
     "pageload"
   ],
-  "main": "angular-ra-pageload-event.js",
+  "main": "angular-ra-pageload.js",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -14,8 +18,9 @@
     "bower_components",
     "src",
     "test",
-    "Gruntfile.js",
     "bower.json",
+    "Gruntfile.js",
+    "karma.conf.js",
     "package.json"
   ],
   "dependencies": {

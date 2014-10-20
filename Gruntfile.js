@@ -86,13 +86,15 @@ module.exports = function (grunt) {
       }
     },
 
-    jsdoc: {
+    ngdocs: {
+      options: {
+        html5Mode: false
+      },
+
       dist: {
+        api: true,
         src: ['src/**/*.js'],
-        options: {
-          destination: 'docs',
-          private: false
-        }
+        title: 'API Reference'
       }
     },
 
@@ -100,7 +102,8 @@ module.exports = function (grunt) {
       server: {
         options: {
           port: 9001,
-          hostname: '0.0.0.0'
+          hostname: '0.0.0.0',
+          keepalive: true
         }
       }
     }
@@ -114,5 +117,5 @@ module.exports = function (grunt) {
   // Register custom tasks
   grunt.registerTask('test', ['karma']);
   grunt.registerTask('build', ['jshint', 'clean:dist', 'concat', 'ngAnnotate', 'uglify']);
-  grunt.registerTask('docs', ['clean:docs', 'jsdoc']);
+  grunt.registerTask('docs', ['clean:docs', 'ngdocs:dist']);
 };
