@@ -1,6 +1,6 @@
 {
   "name": "angular-ra-pageload",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "AngularJS service for triggering document ready event",
   "author": {
     "name": "David Chin",
