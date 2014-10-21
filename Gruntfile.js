@@ -88,10 +88,11 @@ module.exports = function (grunt) {
 
     ngdocs: {
       options: {
-        html5Mode: false
+        html5Mode: false,
+        startPage: '/api'
       },
 
-      dist: {
+      api: {
         api: true,
         src: ['src/**/*.js'],
         title: 'API Reference'
@@ -117,5 +118,5 @@ module.exports = function (grunt) {
   // Register custom tasks
   grunt.registerTask('test', ['karma']);
   grunt.registerTask('build', ['jshint', 'clean:dist', 'concat', 'ngAnnotate', 'uglify']);
-  grunt.registerTask('docs', ['clean:docs', 'ngdocs:dist']);
+  grunt.registerTask('docs', ['clean:docs', 'ngdocs:api']);
 };

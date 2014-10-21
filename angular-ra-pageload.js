@@ -45,12 +45,13 @@ angular.module('ra.pageload', [])
     var loadingInterceptor = {
       /**
        * @ngdoc method
-       * @name onRequest
+       * @name request
        * @methodOf ra.pageload.loadingInterceptor
-       
+       *
        * @description
        * Adds a new http request to the loading queue.
-       
+       *
+       * @param {Object} request http config object
        * @return {Object} http config object
        */
       request: function(request) {
@@ -65,12 +66,13 @@ angular.module('ra.pageload', [])
 
       /**
        * @ngdoc method
-       * @name request
+       * @name response
        * @methodOf ra.pageload.loadingInterceptor
-       
+       *
        * @description
        * Removes a completed http request from the loading queue
-       
+       *
+       * @param {Object} request http response object
        * @return {Object} http response object
        */
       response: function(response) {
@@ -83,10 +85,11 @@ angular.module('ra.pageload', [])
        * @ngdoc method
        * @name requestError
        * @methodOf ra.pageload.loadingInterceptor
-       
+       *
        * @description
        * Removes an unsuccessful http request from the loading queue
-       
+       *
+       * @param {Object} request http response object
        * @return {Object} rejected http promise
        */
       requestError: function(response) {
@@ -97,10 +100,11 @@ angular.module('ra.pageload', [])
        * @ngdoc method
        * @name responseError
        * @methodOf ra.pageload.loadingInterceptor
-       
+       *
        * @description
        * Removes an unsuccessful http response from the loading queue
-       
+       *
+       * @param {Object} request http response object
        * @return {Object} rejected http promise
        */
       responseError: function(response) {
