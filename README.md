@@ -1,5 +1,5 @@
-angular-ra-pageload-event.js
-============================
+angular-ra-pageload.js
+======================
 
 `ra.pageload` module allows you to trigger an action after a page finishes loading, similar to listening for `DOMContentLoaded` event. Every time `$location` changes, the module waits for all `$http` requests to complete - including all API calls requested by your controllers and HTML partials requested by the `ng-include` directives in your views.
 
