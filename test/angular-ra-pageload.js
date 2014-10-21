@@ -24,11 +24,11 @@ describe('ra.pageload', function() {
     describe('#reset', function() {
       it('should reset pending requests', function() {
         loadingProgress.pendingRequests = [request];
-        loadingProgress.loaded  = true;
+        loadingProgress.ready  = true;
 
         loadingProgress.reset();
         expect(loadingProgress.pendingRequests).not.toContain(request);
-        expect(loadingProgress.loaded).toBeFalsy();
+        expect(loadingProgress.ready).toBeFalsy();
       });
     });
 
