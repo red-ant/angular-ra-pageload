@@ -11,15 +11,6 @@ Include `ra.pageload` as a dependency of your application.
 angular.module('application', ['ra.pageload']);
 ```
 
-And then add the following config
-
-```javascript
-angular.module('application')
-  .config(function($httpProvider) {
-    $httpProvider.interceptors.push('loadingInterceptor');
-  });
-```
-
 ## Usage
 
 When the page content is ready, `$rootScope` broadcasts `pageload:ready` event to its child scopes. Therefore, you can listen for it in your controller and perform additional actions.

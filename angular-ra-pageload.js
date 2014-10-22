@@ -20,33 +20,29 @@
  * <pre>
  * angular.module('application', ['ra.pageload'])
  * </pre>
- *
- * And then add the following config
- *
- * <pre>
- * angular.module('application')
- *   .config(function($httpProvider) {
- *     $httpProvider.interceptors.push('loadingInterceptor');
- *   });
- * </pre>
  */
 angular.module('ra.pageload', [])
+
+  .config(function($httpProvider) {
+    $httpProvider.interceptors.push('raLoadingInterceptor');
+  })
+
   /**
    * @ngdoc object
-   * @name ra.pageload.loadingInterceptor
+   * @name ra.pageload.raLoadingInterceptor
    *
    * @requires $q
-   * @requires $loadingProgress
+   * @requires raLoadingProgress
    *
    * @description
    * A `httpInterceptor` that adds GET requests to a queue and removes them once they are done.
    */
-  .factory('loadingInterceptor', function($q, loadingProgress) {
-    var loadingInterceptor = {
+  .factory('raLoadingInterceptor', function($q, raLoadingProgress) {
+    var raLoadingInterceptor = {
       /**
        * @ngdoc method
        * @name request
-       * @methodOf ra.pageload.loadingInterceptor
+       * @methodOf ra.pageload.raLoadingInterceptor
        *
        * @description
        * Adds a new http request to the loading queue.
@@ -55,11 +51,11 @@ angular.module('ra.pageload', [])
        * @return {Object} http config object
        */
       request: function(request) {
-        if (!loadingProgress.initialized) {
-          loadingProgress.init();
+        if (!raLoadingProgress.initialized) {
+          raLoadingProgress.init();
         }
 
-        loadingProgress.queue(request);
+        raLoadingProgress.queue(request);
         
         return request;
       },
@@ -67,7 +63,7 @@ angular.module('ra.pageload', [])
       /**
        * @ngdoc method
        * @name response
-       * @methodOf ra.pageload.loadingInterceptor
+       * @methodOf ra.pageload.raLoadingInterceptor
        *
        * @description
        * Removes a completed http request from the loading queue
@@ -76,7 +72,7 @@ angular.module('ra.pageload', [])
        * @return {Object} http response object
        */
       response: function(response) {
-        loadingProgress.dequeue(response.config);
+        raLoadingProgress.dequeue(response.config);
         
         return response;
       },
@@ -84,7 +80,7 @@ angular.module('ra.pageload', [])
       /**
        * @ngdoc method
        * @name requestError
-       * @methodOf ra.pageload.loadingInterceptor
+       * @methodOf ra.pageload.raLoadingInterceptor
        *
        * @description
        * Removes an unsuccessful http request from the loading queue
@@ -93,13 +89,13 @@ angular.module('ra.pageload', [])
        * @return {Object} rejected http promise
        */
       requestError: function(response) {
-        return loadingInterceptor.responseError(response);
+        return raLoadingInterceptor.responseError(response);
       },
 
       /**
        * @ngdoc method
        * @name responseError
-       * @methodOf ra.pageload.loadingInterceptor
+       * @methodOf ra.pageload.raLoadingInterceptor
        *
        * @description
        * Removes an unsuccessful http response from the loading queue
@@ -108,18 +104,18 @@ angular.module('ra.pageload', [])
        * @return {Object} rejected http promise
        */
       responseError: function(response) {
-        loadingProgress.dequeue(response.config);
+        raLoadingProgress.dequeue(response.config);
 
         return $q.reject(response);
       }
     };
 
-    return loadingInterceptor;
+    return raLoadingInterceptor;
   })
 
   /**
    * @ngdoc object
-   * @name ra.pageload.loadingProgress
+   * @name ra.pageload.raLoadingProgress
    *
    * @requires $rootScope
    * @requires $timeout
@@ -127,12 +123,12 @@ angular.module('ra.pageload', [])
    * @description
    * Monitors the loading progress of http GET requests
    */
-  .factory('loadingProgress', function($rootScope, $timeout) {
-    var loadingProgress = {
+  .factory('raLoadingProgress', function($rootScope, $timeout) {
+    var raLoadingProgress = {
       /**
        * @ngdoc method
        * @name init
-       * @methodOf ra.pageload.loadingProgress
+       * @methodOf ra.pageload.raLoadingProgress
        
        * @description
        * Initialises the service
@@ -154,7 +150,7 @@ angular.module('ra.pageload', [])
       /**
        * @ngdoc method
        * @name reset
-       * @methodOf ra.pageload.loadingProgress
+       * @methodOf ra.pageload.raLoadingProgress
        
        * @description
        * Resets the queue of pending http requests
@@ -171,7 +167,7 @@ angular.module('ra.pageload', [])
       /**
        * @ngdoc method
        * @name queue
-       * @methodOf ra.pageload.loadingProgress
+       * @methodOf ra.pageload.raLoadingProgress
        
        * @description
        * Adds a http request to the queue of pending requests
@@ -192,7 +188,7 @@ angular.module('ra.pageload', [])
       /**
        * @ngdoc method
        * @name dequeue
-       * @methodOf ra.pageload.loadingProgress
+       * @methodOf ra.pageload.raLoadingProgress
        
        * @description
        * Removes a http request from the queue.
@@ -224,7 +220,7 @@ angular.module('ra.pageload', [])
       /**
        * @ngdoc method
        * @name notify
-       * @methodOf ra.pageload.loadingProgress
+       * @methodOf ra.pageload.raLoadingProgress
        
        * @description
        * Broadcasts an event to child scopes
@@ -238,7 +234,7 @@ angular.module('ra.pageload', [])
       }
     };
 
-    return loadingProgress;
+    return raLoadingProgress;
   });
 
 })();
