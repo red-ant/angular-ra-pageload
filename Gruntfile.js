@@ -74,9 +74,10 @@ module.exports = function (grunt) {
     bump: {
       options: {
         files: ['package.json', 'bower.json'],
+        updateConfigs: ['pkg'],
         commitFiles: ['-a'],
         push: false,
-        createTag: false
+        createTag: true
       }
     },
 
@@ -119,4 +120,13 @@ module.exports = function (grunt) {
   grunt.registerTask('test', ['karma']);
   grunt.registerTask('build', ['jshint', 'clean:dist', 'concat', 'ngAnnotate', 'uglify']);
   grunt.registerTask('docs', ['clean:docs', 'ngdocs:api']);
+
+  grunt.registerTask('release', function(bumpLevel) {
+    grunt.task.run([
+      'docs',
+      'bump-only:' + (bumpLevel || 'patch'),
+      'build',
+      'bump-commit'
+    ]);
+  });
 };
