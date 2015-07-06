@@ -29,10 +29,14 @@ module.exports = function (grunt) {
     },
 
     ngAnnotate: {
+     options: {
+       singleQuotes: true
+     },
+
       dist: {
         files: [{
           src: '<%= pkg.name %>.js',
-          dest: '<%= pkg.name %>.min.js'
+          dest: '<%= pkg.name %>.js'
         }]
       }
     },
@@ -43,7 +47,7 @@ module.exports = function (grunt) {
       },
 
       dist: {
-        src: '<%= pkg.name %>.min.js',
+        src: '<%= pkg.name %>.js',
         dest: '<%= pkg.name %>.min.js'
       }
     },
