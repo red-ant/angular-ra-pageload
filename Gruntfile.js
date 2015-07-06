@@ -80,7 +80,8 @@ module.exports = function (grunt) {
         files: ['package.json', 'bower.json'],
         updateConfigs: ['pkg'],
         commitFiles: ['-a'],
-        push: false,
+        pushTo: 'upstream master',
+        push: true,
         createTag: true
       }
     },
@@ -127,9 +128,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('release', function(bumpLevel) {
     grunt.task.run([
-      'docs',
       'bump-only:' + (bumpLevel || 'patch'),
       'build',
+      'docs',
       'bump-commit'
     ]);
   });
