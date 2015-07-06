@@ -1,5 +1,5 @@
 /*!
- * angular-ra-pageload.js v0.1.0
+ * angular-ra-pageload.js v0.1.1
  * 
  * Copyright 2015
  * MIT License
