@@ -17,9 +17,9 @@
  */
 angular.module('ra.pageload', [])
 
-  .config(function($httpProvider) {
+  .config(['$httpProvider', function($httpProvider) {
     $httpProvider.interceptors.push('raLoadingInterceptor');
-  })
+  }])
 
   /**
    * @ngdoc object
@@ -31,7 +31,7 @@ angular.module('ra.pageload', [])
    * @description
    * A `httpInterceptor` that adds GET requests to a queue and removes them once they are done.
    */
-  .factory('raLoadingInterceptor', function($q, raLoadingProgress) {
+  .factory('raLoadingInterceptor', ['$q', 'raLoadingProgress', function($q, raLoadingProgress) {
     var raLoadingInterceptor = {
       /**
        * @ngdoc method
@@ -105,7 +105,7 @@ angular.module('ra.pageload', [])
     };
 
     return raLoadingInterceptor;
-  })
+  }])
 
   /**
    * @ngdoc object
@@ -117,7 +117,7 @@ angular.module('ra.pageload', [])
    * @description
    * Monitors the loading progress of http GET requests
    */
-  .factory('raLoadingProgress', function($rootScope, $timeout) {
+  .factory('raLoadingProgress', ['$rootScope', '$timeout', function($rootScope, $timeout) {
     var raLoadingProgress = {
       /**
        * @ngdoc method
@@ -229,6 +229,6 @@ angular.module('ra.pageload', [])
     };
 
     return raLoadingProgress;
-  });
+  }]);
 
 })();
